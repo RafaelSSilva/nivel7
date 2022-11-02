@@ -11,7 +11,7 @@ class PessoaList {
     public function delete($param) {
         try {
             $id = (int) $param['id'];
-            Pessoa::delete($id);
+            Pessoa::remove($id);
         } catch (Exception $e) {
             print $e->getMessage();
         }

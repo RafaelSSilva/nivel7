@@ -1,7 +1,5 @@
 <?php
-class Pessoa
-{
-
+class Pessoa {
   public static function save(array $pessoa):object {
     $conn   = Conexao::getConnection();
     $tabela = Conexao::getTbPessoa();

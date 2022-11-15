@@ -11,7 +11,6 @@ class Cidade {
     
     foreach ($result->fetchAll(PDO::FETCH_ASSOC) as $cidade) {
       $output .= "<option value='{$cidade['id']}'>{$cidade['nome']}</option>\n";
-
     }
 
     return $output;    

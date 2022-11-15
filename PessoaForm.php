@@ -4,8 +4,9 @@
         private array $data;
 
         public function __construct() {
-            $this->html = file_get_contents('html/form.html');            
-            $this->data = [ 'id'        => null,
+            try {
+                $this->html = file_get_contents('html/form.html');            
+                $this->data = [ 'id'        => null,
                             'nome'      => null,
                             'endereco'  => null,
                             'bairro'    => null,                   
@@ -13,11 +14,13 @@
                             'email'     => null,
                             'id_cidade' => null    
                         ];  
-           
-            $this->html = str_replace('{cidades}', Cidade::lista_combo_cidades(), $this->html);                       
+                $this->html = str_replace('{cidades}', Cidade::lista_combo_cidades(), $this->html);                       
+            } catch (Exception $e) {
+                $e->getMessage();
+                exit;
+            }          
         }
-
-        
+       
         public function edit(array $param):void {
             try {
                 $id = (int) $param['id'];
@@ -48,6 +51,5 @@
             $this->html = str_replace('{email}', $this->data['email'], $this->html);
             $this->html = str_replace("option value='{$this->data['id_cidade']}'", "option value='{$this->data['id_cidade']}' selected=1", $this->html); 
             print $this->html;
-        }
-        
+        }       
     }

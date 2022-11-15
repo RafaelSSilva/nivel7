@@ -1,8 +1,8 @@
 <?php
 class Conexao {
-    private static $conn;
-    private static $tb_pessoa;
-    private static $tb_cidade;
+    private static object $conn;
+    private static string $tb_pessoa;
+    private static string $tb_cidade;
 
     public static function getConnection():object {
       if (empty(self::$conn)) {
